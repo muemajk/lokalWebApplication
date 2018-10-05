@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Welcome Home</title>
+  <script src="https://www.gstatic.com/firebasejs/4.6.0/firebase.js"></script>
+<script src="https://www.gstatic.com/firebasejs/4.6.0/firebase-firestore.js"></script>
+<script type="text/javascript">
+    // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyDg7WBqJS7MjOZJReEcyf2FyJTxtwY3XK0",
+    authDomain: "lokalapp-986d3.firebaseapp.com",
+    databaseURL: "https://lokalapp-986d3.firebaseio.com",
+    projectId: "lokalapp-986d3",
+    storageBucket: "lokalapp-986d3.appspot.com",
+    messagingSenderId: "343055679868"
+  };
+  firebase.initializeApp(config);
+
+// Initialize Cloud Firestore through Firebase
+var db = firebase.firestore();
+  
+// Initialize realtime database
+  var database = firebase.database();
+
+</script>
+<script src="..\javascript\music.js"></script>
+<script src="..\javascript\signout.js"></script>
+
+<style type="text/css">
+#nav{
+  width: 50%;
+
+  margin-left: 30px;
+  margin-right: 30px;
+  padding: 0px;
+  overflow: hidden;
+  
+  background-color: none;
+
+  list-style-type: none;
+  border-bottom: 0.5px  orange;
+  border-radius: 5px 0px 5px 0px;
+    box-shadow: none;
+    opacity: 1;
+
+
+}
+
+#nav li{
+  border-bottom: 1px solid orange;
+
+  float: left;
+  border:none;
+  margin: 0px;
+  width: 23%;
+  background-color: mintcream;
+  border-radius: 5px 0px 0px 5px;
+  border-left: 1px ;
+  margin-top: 2px;
+
+
+  
+
+}
+
+
+#nav a{
+  width: 60px;
+  background-color: mintcream;
+  border:none;
+  text-decoration: none;
+  color: #242124;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+#nav button{
+  width: 100px;
+  background-color: mintcream;
+  list-style-type: none;
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+  border: 1px solid #242124;
+  box-shadow: none;
+  border-radius: 0px 0px 0px 0px;
+}
+
+#nav button:hover{
+  background-color: #242124;
+  color: mintcream;
+}
+
+#nav a:hover{
+  background-color: #242124;
+  color: mintcream;
+}
+
+
+  #body{
+  background-color: #242124;
+  width: 70%;
+  margin-left: 200px;
+  
+  border-radius: 15px 15px 0px 0px;
+  border: 1px solid orange;
+    box-shadow: 4px 3px 3px grey;
+    border-bottom: 1px;
+}
+.wrapper1{
+  height: 200px;
+  margin-left: 0px;
+  background-color: green;
+  border-radius: 12px 12px 12px 12px;
+  
+}
+.wrapper1 h1{
+
+  font-weight: bold;
+  font-size: 64px;
+  text-align: center;
+  font-family: verdana;
+  border-bottom: 1px;
+  width: 100%;
+
+}
+
+
+.wrapper1 p{
+  text-align: center;
+  font-size: 12px;
+  color:  mintcream;
+  font-family: courier new;
+  }
+.wrapper1 strong{
+
+  font-weight: 400;
+  font-size: 28px;
+  font-family: impact;
+  margin-right: 5px;
+  color: white;
+}
+
+button{
+  border-radius: 7px 7px 7px 7px;
+  background-color: #242124;
+  width: 100px;
+  border-top: 1px;
+  border-left: 1px;
+  border-right: 1px solid orange;
+  border-bottom: 1px solid orange;
+  box-shadow: 1px 0.5px 0.5px orange;
+}
+
+#prod{
+  width: 97%;
+  }
+#regist{
+
+  background-color: mintcream;
+  padding-bottom: 5px;
+  margin-bottom: 5px;
+  width: 100%;
+  }
+
+#regist legend{
+  color: orange;
+
+
+}
+#musicUpload{
+  width: 70%;
+  margin-left:40px;
+}
+#footer{
+  margin-top: auto;
+  border:2px solid outset;
+  
+  margin-left: 200px;
+  height: 60%;
+  width: 70%;
+  text-align: center;
+  font-size: 10px;
+  color: grey; 
+  background-color: orange;
+  border-radius: 0px 0px 12px 12px;
+    box-shadow: 4px 3px 3px grey;<hr>
+}
+
+#footer h1{
+  text-decoration: underline;
+}
+</style>
+</head>
+<body onload="checklogin()">
+
+<div id="body">
+  <div class="wrapper1">
+    <h1>LOKALSERVER</h1>
+    <p><marquee width="50%">MATATU.PROMOTER   <strong>MUSIC.SERVER</strong>   MOBILE.APPLICATION</marquee></p>
+
+    <div id= "side">
+
+
+
+<ul id = "nav">
+ 
+  <li><a onclick="logout()">LOGOUT</a></li>
+  
+</ul>
+
+
+
+</div>
+
+  </div>
+
+
+  <div id="prod">
+<h6>MUSIC UPLOAD PROGRESS</h6>
+  <progress  value="0" max="100" id="musicUpload"></progress>
+<hr>
+<h6>CLIP UPLOAD PROGRESS</h6>
+ <progress  value="0" max="100" id="clipUpload"></progress>
+ <hr>
+
+<div id="content">
+
+
+
+  <table>
+
+
+      <tr><td><label>NAME:</label></td>
+      <td><input type="text" id="musicname" placeholder="Enter song name." ></td></tr>
+
+      <tr><td><label>MUSIC FILE:</label></td>
+      <td><input id="mus" type="file" ></td></tr>
+      <tr><td><label>CLIP FILE:</label></td>
+      <td><input id="clip" type="file" ></td></tr>
+      <tr><td>Location:</td><td><select id="loc"><option value="Nairobi">Nairobi</option>
+      <option value="Kajiado">Kajiado</option><option value="Mombasa">Mombasa</option><option value="Kisumu">Kisumu</option><option value="Machakos">Machakos</option></select></td></tr>
+        <tr><td><label>GENRE:</label></td>
+        <td><select id="genre"><option value="Hiphop">Hiphop</option>
+      <option value="Rock">Rock</option>
+      <option value="RnB">RnB</option></select></td></tr>
+
+
+      <tr><td><label >PRICE:</label></td>
+        <td><select id="price"><option value="20">20</option>
+      <option value="30">30</option>
+      <option value="50">50</option></select>KSH</td></tr>
+      <tr><td><label >ALBUM:</label></td>
+        <td><input type="text" id="alname"></td></tr>
+      <td ><hr><button id= "upload" onclick="isitEmpty()"> save</button>
+        </td>
+    </tr>
+  </table>
+</div>
+
+  </div>
+</div>
+<div id="footer">
+<hr>
+  <marquee width ="50%"> END </marquee>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+<script src="https://www.gstatic.com/firebasejs/4.6.0/firebase.js"></script>
+<script src="https://www.gstatic.com/firebasejs/4.6.0/firebase-firestore.js"></script>
+<script type="text/javascript">
+    // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyDg7WBqJS7MjOZJReEcyf2FyJTxtwY3XK0",
+    authDomain: "lokalapp-986d3.firebaseapp.com",
+    databaseURL: "https://lokalapp-986d3.firebaseio.com",
+    projectId: "lokalapp-986d3",
+    storageBucket: "lokalapp-986d3.appspot.com",
+    messagingSenderId: "343055679868"
+  };
+  firebase.initializeApp(config);
+
+// Initialize Cloud Firestore through Firebase
+var db = firebase.firestore();
+
+// Initialize realtime database
+  var database = firebase.database();
+  
+</script>
+<script src="..\javascript\matreg.js"></script>
+
+<style type="text/css">
+	#body{
+	background-color: #242124;
+	width: 70%;
+	margin-left: 200px;
+	
+	border-radius: 15px 15px 0px 0px;
+	border: 1px solid orange;
+	  box-shadow: 4px 3px 3px grey;
+	  border-bottom: 1px;
+}
+.wrapper1{
+  height: 200px;
+  margin-left: 0px;
+  background-color: green;
+  border-radius: 12px 12px 12px 12px;
+  
+}
+.wrapper1 h1{
+
+	font-weight: bold;
+	font-size: 64px;
+	text-align: center;
+	font-family: verdana;
+	border-bottom: 1px;
+	width: 100%;
+
+}
+
+
+.wrapper1 p{
+	text-align: center;
+	font-size: 12px;
+	color:  mintcream;
+	font-family: courier new;
+	}
+.wrapper1 strong{
+
+	font-weight: 400;
+	font-size: 28px;
+	font-family: impact;
+	margin-right: 5px;
+	color: white;
+}
+
+#prod{
+	width: 97%;
+	}
+#regist{
+
+	background-color: mintcream;
+	padding-bottom: 5px;
+	margin-bottom: 5px;
+	width: 100%;
+	}
+
+#regist legend{
+	color: orange;
+
+
+}
+#footer{
+	margin-top: auto;
+	border:2px solid outset;
+	
+	margin-left: 200px;
+	height: 60%;
+	width: 70%;
+	text-align: center;
+	font-size: 10px;
+	color: grey; 
+	background-color: orange;
+	border-radius: 0px 0px 12px 12px;
+    box-shadow: 4px 3px 3px grey;
+}
+
+#footer h1{
+	text-decoration: underline;
+}
+</style>
+</head>
+<body>
+<div id="body">
+	<div class="wrapper1">
+		<h1>LOKALSERVER</h1>
+		<p><marquee width="50%">MATATU.PROMOTER   <strong>MUSIC.SERVER</strong>   MOBILE.APPLICATION</marquee></p>
+	</div>
+
+
+	<div id="prod">
+		<fieldset>
+			<legend>MATATU REGISTRATION</legend>
+			<h6>MATATU PICTURE UPLOAD PROGRESS</h6>
+ <progress  value="0" max="100" id="matatupicUpload"></progress>
+ <hr>
+							<table id="add" enctype="multipart/form-data">
+								<tr><td>Sacco:</td><td> <input type="text" id="sacco" placeholder="Name of Matatu Sacco"></td></tr>
+								<tr><td>Owner name: </td><td><input type="text" id="oname" placeholder="Name of Matatu Owner"></td></tr><br>
+								<tr><td>Owner surnames:</td><td> <input type="text" id="otname" placeholder="Other names of Matatu Owner"></td></tr><br>
+								<tr><td>EMAIL ADDRESS:</td><td><input type='email' name='email' id="mail" placeholder='Your@domian.com'></td></tr><br>
+								<tr><td>Telephone Number:</td><td> <input type="Number" id="phone" placeholder="Telephone Number"></td></tr><br><br>
+								<tr><td>Location(Where it is Stationed):</td><td><select id="loc"><option value="Nairobi">Nairobi</option>
+								<option value="Kajiado">Kajiado</option><option value="Mombasa">Mombasa</option><option value="Kisumu">Kisumu</option><option value="Machakos">Machakos</option></select></td></tr>
+								<tr><td>  Class:</td><td><select id="class"><option value="Truck">Truck</option>
+			<option value="Van">Van</option></select><br></td></tr>
+
+								<tr><td>Conductor name: </td><td><input type="text" id="conname" placeholder="Name of Matatu Conductor"></td></tr><br>
+								<tr><td>Conductor surnames:</td><td> <input type="text" id="conSname" placeholder="Surname of Matatu Conductor"></td></tr><br>
+
+								<tr><td>Driver name: </td><td><input type="text" id="dname" placeholder="Name of Matatu Driver"></td></tr><br>
+								<tr><td>Driver surnames:</td><td> <input type="text" id="dsname" placeholder="Surname of Matatu Driver"></td></tr><br>
+								<tr><td>Matatu Name:</td><td><input type="text" id="mname" placeholder="Name of your Matatu"></td></tr>
+								<tr><td>Matatu Number Plate:</td><td><input type="text" id="plate" placeholder="Matatu Number Plate"></td></tr>
+								<tr><td><label>MATATU PICTURE:</label></td>
+      							<td><input id="matpic" type="file" ></td></tr>
+								<tr><td>Wifiname:</td><td> <input type="text" id="wname" placeholder="Matatu Wifi Name"></td></tr>
+								<tr><td>WIFI BSSiD:</td><td> <input type="text" id="madd" placeholder="Matatu router Mac address"></td></tr>
+								<tr><td>Wifi password:</td><td> <input type="password" id="wpass" placeholder="Matatu Wifi password"></td></tr>
+								<tr><td>Wifi passsword confirm:</td><td> <input type="password" id="cpass" placeholder="type Matatu Wifi password again"></td></tr>
+								<tr><td><button id="register" onclick="isNotempty()">REGISTER</button></td></form><h6>GO BACK TO LOGIN?<a href="..\dockpage.html">Login</a></h6></tr>
+
+				</table>
+
+				
+		</fieldset>
+	</div>
+</div>
+
+<div id="footer">
+<hr>
+	<marquee width ="50%"> END </marquee>
+
+
+</div>
+</body>
+</html>

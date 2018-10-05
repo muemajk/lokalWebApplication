@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Welcome to LokalMUSIC</title>
+  <link rel="stylesheet" type="text/css" href="css/design.css">
+<script src="https://www.gstatic.com/firebasejs/4.6.0/firebase.js"></script>
+<script type="text/javascript">
+    // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyDg7WBqJS7MjOZJReEcyf2FyJTxtwY3XK0",
+    authDomain: "lokalapp-986d3.firebaseapp.com",
+    databaseURL: "https://lokalapp-986d3.firebaseio.com",
+    projectId: "lokalapp-986d3",
+    storageBucket: "lokalapp-986d3.appspot.com",
+    messagingSenderId: "343055679868"
+  };
+  firebase.initializeApp(config);
+
+
+  
+</script>
+<script src="javascript\app.js"></script>
+
+
+<style type="text/css">
+  #body{
+  background-color: #242124;
+  width: 60%;
+  margin-left: 200px;
+  
+  border-radius: 15px 15px 0px 0px;
+  border: 1px solid orange;
+    box-shadow: 4px 3px 3px grey;
+    border-bottom: 1px;
+}
+.wrapper1{
+  height: 200px;
+  margin-left: 0px;
+  background-color: #242124;
+  border-radius: 12px 12px 0px 0px;
+  
+}
+.wrapper1 h1{
+
+  font-weight: bold;
+  font-size: 64px;
+  text-align: center;
+  font-family: verdana;
+  border-bottom: 1px;
+  width: 100%;
+
+}
+
+
+.wrapper1 p{
+  text-align: center;
+  font-size: 12px;
+  color:  mintcream;
+  font-family: courier new;
+  }
+.wrapper1 strong{
+
+  font-weight: 400;
+  font-size: 28px;
+  font-family: impact;
+  margin-right: 5px;
+  color: white;
+}
+
+
+#type{
+  margin-left: 30%;
+
+}
+
+#footer{
+  border:2px solid outset;
+  margin-top: auto;
+  height: 60%;
+  width: 100%;
+  text-align: center;
+  font-size: 10px;
+  color: grey; 
+  background-color: orange;
+  border-radius: 0px 0px 12px 12px;
+    box-shadow: 4px 3px 3px grey;
+}
+
+#footer h1{
+  text-decoration: underline;
+}
+</style>
+
+</head>
+<body>
+  <script src="javascript\app.js"></script>
+<div id= "body">
+<div class= "wrapper1">
+ <h1>LokalMUSIC SERVER</h1>
+
+ <p><marquee width = "50%">MATATU.PROMOTER     <strong>MUSIC.SERVER</strong>     MOBILE.APPLICATION</marquee></p>
+<h4>Enter your email address and Password to login or sign up as a new artist or register a matatu</h4>
+
+
+
+  
+<table id = 'type'>
+  
+      <tr><td>Email Address:</td><td><input type='email' name='email' id="email" placeholder='Your"domian.com'></td></tr>
+      <tr><td>password:</td><td><input type='password' name='password' id="password" placeholder='Password'></td></tr>
+      <tr><td><input type="radio" id="mat" value="matatu"> Matatu</td><td><input type="radio" id="mus" value="musician"> Musician</td></tr>
+       <tr><td><button id = 'login' onclick="login()">LOGIN</button></form></td><td><button id= 'reg' onclick="signup()">SIGNUP</button></td></tr></table>
+  
+
+<div id="footer">
+
+
+
+</div>
+</body>
+</html>
